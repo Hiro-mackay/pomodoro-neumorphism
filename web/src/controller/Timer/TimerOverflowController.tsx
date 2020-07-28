@@ -2,10 +2,12 @@ import React from "react";
 import { useAuth } from "../../hooks";
 import { TimerDefault } from "./TimerDefault";
 import { TimerChangeTypeController } from "./TimerChangeTypeController";
+import { TimerCalledBell } from "./TimerCalledBell";
 
 export interface ITimerOverflowContlloer {
   standardMilliseconds: number;
   milliseconds: number;
+  isLoopAction: boolean;
   setMilliseconds: React.Dispatch<React.SetStateAction<number>>;
   setIsLoopAction: React.Dispatch<React.SetStateAction<boolean>>;
   setIsStop: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,10 +37,12 @@ const TimerOverflowHelper: React.FC<ITimerOverflowContlloer> = (props) => {
       setIsLoopAction={props.setIsLoopAction}
       setIsStop={props.setIsStop}
     >
-      <TimerDefault
-        milliseconds={props.milliseconds}
-        standardMilliseconds={props.standardMilliseconds}
-      />
+      <TimerCalledBell isLoopAction={props.isLoopAction}>
+        <TimerDefault
+          milliseconds={props.milliseconds}
+          standardMilliseconds={props.standardMilliseconds}
+        />
+      </TimerCalledBell>
     </TimerChangeTypeController>
   );
 };

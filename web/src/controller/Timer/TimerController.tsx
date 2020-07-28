@@ -31,8 +31,8 @@ export const TimerController = () => {
 
   const [play, setAudio] = useAudio(
     currentUser?.timer?.timerType === "pomodoro"
-      ? "zapsplat_bell_service_disk_ring_slightly_broken_resonate_18042.mp3"
-      : "zapsplat_bell_service_desk_press_x2_18038.mp3"
+      ? "zapsplat_bell_service_desk_press_x2_18038.mp3"
+      : "zapsplat_bell_service_disk_ring_slightly_broken_resonate_18042.mp3"
   );
 
   React.useEffect(() => {
@@ -45,10 +45,10 @@ export const TimerController = () => {
       : setTimerStandardMilliseconds(BREAK_TIMER_STANDARD_MILLISECONDS);
 
     currentUser?.timer?.timerType === "pomodoro"
-      ? setAudio(
+      ? setAudio("zapsplat_bell_service_desk_press_x2_18038.mp3")
+      : setAudio(
           "zapsplat_bell_service_disk_ring_slightly_broken_resonate_18042.mp3"
-        )
-      : setAudio("zapsplat_bell_service_desk_press_x2_18038.mp3");
+        );
   }, [timer?.timerType]);
 
   return (
@@ -73,6 +73,7 @@ export const TimerController = () => {
           <TimerOverflowContlloer
             milliseconds={milliseconds}
             standardMilliseconds={timerStandardMilliseconds}
+            isLoopAction={isLoopAction}
             setMilliseconds={setMilliseconds}
             setIsLoopAction={setIsLoopAction}
             setIsStop={setIsStop}

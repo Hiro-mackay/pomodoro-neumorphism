@@ -1,0 +1,17 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "description": "pomodoro timer",
+  "main": "index.js",
+  "repository": "https://github.com/Hiro-mackay/pomodoro.git",
+  "author": "mackay",
+  "license": "MIT",
+  "scripts": {
+    "coreinstall": "cd ../core && npm install",
+    "corebuild": "cd ./core && yarn install && yarn run build ",
+    "corereinstall": "yarn run corebuild && cd ./web && yarn remove core && yarn add file:../core",
+    "webstart": " yarn run start",
+    "webbuild": "cd ./web && yarn run build",
+    "webdeploy": "cd ./web && firebase deploy"
+  }
+}
