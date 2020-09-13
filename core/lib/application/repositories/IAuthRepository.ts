@@ -16,3 +16,18 @@ export abstract class IAuthRepository {
   ): firebase.Unsubscribe;
   abstract curentUser(): IAuthUser | null;
 }
+
+abstract class Repository {
+  abstract getData(): void;
+}
+
+type DataAccessInterface = Repository;
+class DataAccess {
+  getData = () => {};
+}
+
+// Domain.ts
+const infra: DataAccessInterface = new DataAccess();
+infra.getData();
+// DataAccessの内部実装は知らんが、getDataがあることは、
+// 抽象クラスDataAccessInterfaceで定義されている
